@@ -14,19 +14,72 @@
     },
     "cz-emoji": {
       "types": [
-        { "emoji": "✨", "code": "feat:", "description": "引入新功能", "name": "feature" },
-        { "emoji": "🐛", "code": "fix:", "description": "修复bug", "name": "fix" },
-        { "emoji": "📝", "code": "docs:", "description": "修改文档", "name": "docs" },
-        { "emoji": "🎨", "code": "style:", "description": "优化代码结构或格式", "name": "style" },
-        { "emoji": "🚀", "code": "perf:", "description": "优化性能", "name": "perf" },
-        { "emoji": "🔨", "code": "refactor:", "description": "重构代码", "name": "refactor" },
-        { "emoji": "💄", "code": "ui:", "description": "更新UI样式", "name": "ui" },
-        { "emoji": "🔧", "code": "config:", "description": "修改配置文件", "name": "config" },
-        { "emoji": "🚨", "code": "test:", "description": "增加测试", "name": "test" },
-        { "emoji": "🚧", "code": "wip:", "description": "进行中的工作", "name": "wip" }
+        {
+          "emoji": "✨",
+          "code": "feat:",
+          "description": "引入新功能",
+          "name": "feature"
+        },
+        {
+          "emoji": "🐛",
+          "code": "fix:",
+          "description": "修复bug",
+          "name": "fix"
+        },
+        {
+          "emoji": "📝",
+          "code": "docs:",
+          "description": "修改文档",
+          "name": "docs"
+        },
+        {
+          "emoji": "🎨",
+          "code": "style:",
+          "description": "优化代码结构或格式",
+          "name": "style"
+        },
+        {
+          "emoji": "🚀",
+          "code": "perf:",
+          "description": "优化性能",
+          "name": "perf"
+        },
+        {
+          "emoji": "🔨",
+          "code": "refactor:",
+          "description": "重构代码",
+          "name": "refactor"
+        },
+        {
+          "emoji": "💄",
+          "code": "ui:",
+          "description": "更新UI样式",
+          "name": "ui"
+        },
+        {
+          "emoji": "🔧",
+          "code": "config:",
+          "description": "修改配置文件",
+          "name": "config"
+        },
+        {
+          "emoji": "🚨",
+          "code": "test:",
+          "description": "增加测试",
+          "name": "test"
+        },
+        {
+          "emoji": "🚧",
+          "code": "wip:",
+          "description": "进行中的工作",
+          "name": "wip"
+        }
       ],
       "allowCustomScopes": true,
-      "allowBreakingChanges": ["feat", "fix"]
+      "allowBreakingChanges": [
+        "feat",
+        "fix"
+      ]
     }
   },
   "lint-staged": {
@@ -52,6 +105,7 @@
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.2"
   }
 }
