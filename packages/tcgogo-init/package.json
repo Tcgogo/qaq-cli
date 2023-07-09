@@ -16,6 +16,10 @@
     "src",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tcgogo/qaq-cli/tree/master/packages/tcgogo-init"
+  },
 
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
