@@ -1,0 +1,9 @@
+{
+  "include": ["src/*.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "types": ["node"]
+  }
+}
