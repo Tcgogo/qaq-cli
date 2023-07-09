@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+const { execSync } = require('child_process');
+
+const targetName = process.argv[2];
+
+const excludeBranch = ['develop', 'dev'];
+
+const currentBranch = execSync('git symbolic-ref --short -q HEAD', {
+  encoding: 'utf-8',
+});
+
+if (excludeBranch.some((v) => v === targetName)) {
+  console.log(`\x1b[31m检测到非法变基: ${targetName} ⇢ ${currentBranch}\x1b[39m`);
+  process.exit(1);
+}

@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+const { execSync } = require('child_process');
+
+function getMergeBranch() {
+  function getBranchNameFromReflog(reflogMessage) {
+    const reg = /@\{\d+\}: merge (.*):/;
+    const ref = reg.exec(reflogMessage);
+    return ref && ref[1];
+  }
+
+  const reflogMessage = execSync('git reflog -1', { encoding: 'utf8' });
+  const mergedBranchName = getBranchNameFromReflog(reflogMessage);
+  return mergedBranchName;
+}
+
+const excludeBranch = ['develop', 'dev'];
+
+const mergeBranch = getMergeBranch();
+const currentBranch = execSync('git symbolic-ref --short -q HEAD', {
+  encoding: 'utf-8',
+});
+
+if (excludeBranch.some((v) => v === mergeBranch)) {
+  console.log(`\x1b[31m\n检测到非法合并: ${mergeBranch} ⇢ ${currentBranch}\x1b[39m`);
+  const exec = 'git reset --merge HEAD@{1}';
+  console.log(`\x1b[90m$ ${exec}\x1b[39m`);
+  execSync(exec);
+  console.log('\x1b[31m\n已撤销合并 done\x1b[39m');
+
+  process.exit();
+}

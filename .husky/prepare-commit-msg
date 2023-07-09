@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+const fs = require('fs');
+const { execSync } = require('child_process');
+
+const gitMergeMsgFilePath = process.argv[2]; //  '.git/MERGE_MSG',
+const gitCmd = process.argv[3];
+
+if (gitCmd !== 'merge') process.exit();
+
+// 合并是否有冲突
+function isMergingConflict() {
+  try {
+    const mergeMsg = fs.readFileSync(gitMergeMsgFilePath, { encoding: 'utf8' });
+    return /\n# Conflicts:\n/.test(mergeMsg);
+  } catch (err) {
+    return false;
+  }
+}
+
+// 若无合并冲突，则在 post-merge 中校验合并规则
+if (!isMergingConflict()) process.exit();
+
+// 从 .git/MERGE_HEAD (sha) 提取合并进来的分支名
+function getMergeBranch() {
+  try {
+    const mergeBranchInfo = execSync('git name-rev MERGE_HEAD');
+    return /MERGE_HEAD (.*?)\n/.exec(mergeBranchInfo)[1];
+  } catch (err) {
+    return '';
+  }
+}
+
+const excludeBranch = ['develop', 'dev'];
+const mergeBranch = getMergeBranch();
+const currentBranch = execSync('git symbolic-ref --short -q HEAD', {
+  encoding: 'utf-8',
+});
+
+if (excludeBranch.includes(mergeBranch)) {
+  console.log(`\x1b[31m\n检测到非法合并: ${mergeBranch} ⇢ ${currentBranch}\x1b[39m`);
+
+  process.on('exit', () => {
+    try {
+      execSync('git merge --abort');
+    } catch (error) {
+      console.error('\x1b[33m请使用 git merge --abort 命令终止合并\n\x1b[39m');
+    }
+  });
+
+  process.exit(1);
+}
