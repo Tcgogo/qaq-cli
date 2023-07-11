@@ -1,0 +1,51 @@
+{
+  "name": "@tcgogo/core",
+  "version": "0.0.0",
+  "description": "cli init",
+  "author": "Tcgogo <1812497229@qq.com>",
+  "keywords": [
+    "typescript",
+    "cli",
+    "tcgogo"
+  ],
+  "homepage": "",
+  "license": "ISC",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tcgogo/qaq-cli/tree/master/packages/tcgogo-init"
+  },
+  "bin": {
+    "tc": "index.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "scripts": {
+    "build": "vite build",
+    "serve:comment": "启动开发环境",
+    "serve": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "eslint:comment": "使用 ESLint 检查并自动修复 src 目录下所有扩展名为 .ts 的文件",
+    "eslint": "eslint --fix src --ext .ts --max-warnings=0",
+    "prettier:comment": "自动格式化 src 目录下的所有 .ts 文件",
+    "prettier": "prettier --write './src/**/*.{ts}'"
+  },
+  "dependencies": {
+    "@tcgogo/core": "file:",
+    "@tcgogo/init": "link:T:/tcgogo/qaq-cli/packages/tcgogo-init"
+  }
+}
