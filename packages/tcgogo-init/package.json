@@ -14,13 +14,19 @@
   "files": [
     "dist",
     "src",
+    "bin",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Tcgogo/qaq-cli/tree/master/packages/tcgogo-init"
   },
-
+  "bin": {
+    "tc": "bin/index.js"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "exports": {
@@ -29,15 +35,15 @@
       "require": "./dist/index.cjs"
     }
   },
-
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "scripts": {
-    "build": "vite build",
     "serve:comment": "启动开发环境",
-    "serve": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "serve": "vite build --watch",
+    "build:comment": "项目打包",
+    "build": "vite build",
     "eslint:comment": "使用 ESLint 检查并自动修复 src 目录下所有扩展名为 .ts 的文件",
     "eslint": "eslint --fix src --ext .ts --max-warnings=0",
     "prettier:comment": "自动格式化 src 目录下的所有 .ts 文件",

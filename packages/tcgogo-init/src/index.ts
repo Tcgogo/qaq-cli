@@ -1,5 +1,5 @@
-function init() {
-  console.log('init tcgogo2');
+export function init() {
+  console.log('init tcgogo212');
 }
 
 init();
