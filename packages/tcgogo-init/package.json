@@ -10,7 +10,6 @@
   ],
   "homepage": "",
   "license": "ISC",
-  "type": "module",
   "files": [
     "dist",
     "src",

@@ -1,6 +1,7 @@
 {
   "include": ["src/*.ts"],
   "compilerOptions": {
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
