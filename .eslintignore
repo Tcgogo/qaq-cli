@@ -1,2 +1,7 @@
 lib/
 *.js
+static/
+*.min.js
+dist
+*.d.ts
+*.js
