@@ -4,6 +4,7 @@ module.exports = {
     '@typescript-eslint/semi': ['error', 'always'],
     'antfu/if-newline': 0,
     'no-console': ['error', { allow: ['warn', 'info', 'error'] }],
+    'unicorn/prefer-node-protocol': 0,
   },
   plugins: ['prettier'],
   globals: {

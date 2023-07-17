@@ -5,6 +5,6 @@
     "baseUrl": ".",
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["node"],
   }
 }
